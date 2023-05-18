@@ -1,5 +1,6 @@
 import openai
 from bookgpt.services.promptsplicer import PromptSplicer
+from bookgpt.model.dataclasses import APIkeys
 import json
 import logging
 
@@ -8,7 +9,7 @@ class PromptSender:
         self.input = input
         self.debug = debug
         self.prompt_splicer = PromptSplicer(input)
-        self.api_key = "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"
+        self.api_key = APIkeys.openai
 
     def check_if_bookprompt(self):
 

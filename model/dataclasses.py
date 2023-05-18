@@ -1,6 +1,8 @@
 
 from dataclasses import dataclass
- 
+import os
+
+
 @dataclass
 class Quote:
     author: str
@@ -20,3 +22,7 @@ class Response:
     meaning: str
     style:str
     quotes: list[Quote]
+
+@dataclass(frozen=True)
+class APIkeys:
+    openai: str = os.environ.get('openai_api_key')

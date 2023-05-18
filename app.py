@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template, redirect, url_for
 from bookgpt.services.promptsender import PromptSender
 from bookgpt.services.uidatawrangler import ModelCreator
+from bookgpt.model.dataclasses import APIkeys
 
 app = Flask(__name__)
 
