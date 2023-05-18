@@ -7,6 +7,8 @@ class PromptSplicer:
     # Configure logging to display INFO level messages and above
     logging.basicConfig(level=logging.INFO)
 
+    #functions for adding prompts
+    
     def check_book_prompt(self):
 
         dict_format = '''
