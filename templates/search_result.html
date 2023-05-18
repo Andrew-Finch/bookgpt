@@ -1,0 +1,121 @@
+
+{% extends 'layout.html' %}
+{% block title %}
+Books.AI Search
+{% endblock %}
+
+{% block content %}
+
+<style>
+    .rounded-border {
+        border: 2px solid black;
+        border-radius: 10px;
+        padding: 10px;
+        width: 200px;
+    }
+    .bold-italic {
+        font-weight: bold;
+        font-style: italic;
+    }
+</style>
+
+<div class="grid-container">
+    <div class="grid-x grid-padding-x">
+        <div class="cell small-12 medium-12 center-title">
+            <div>
+                <div class="center">
+                    <img src="static\images\book.png" alt="AI" width="100px;">
+                </div>
+                <h2 class="bold-italic">{{response.query}}</h2>
+            </div>
+        </div>
+
+        <div class="cell small-12 medium-12">
+            <br>
+        </div>
+
+        <div class="cell small-12 medium-12">
+
+            <div class="index-grid-container">
+                  
+                <div class="card">
+                  <div class="card-divider-result">
+                    <h4 class="bold-italic">Author</h4>
+                  </div>
+                  <div class="card-section">
+                    <div class="center">
+                      <img src="static\images\author.png" alt="AI" width="100px;">
+                      <br>
+                      <br>
+                      <h5 class="bold-italic">{{response.description.author}}</h5>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  <div class="card-divider-result">
+                    <h4 class="bold-italic">Country of Origin</h4>
+                  </div>
+                  <div class="card-section">
+                    <div class="center">
+                      <img src="static\images\location.png" alt="AI" width="100px;">
+                      <br>
+                      <br>
+                      <h5 class="bold-italic">{{response.description.nationality}}</h5>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="card-divider-result">
+                    <h4 class="bold-italic">Genre</h4>
+                  </div>
+                  <div class="card-section">
+                    <div class="center">
+                      <img src="static\images\genre.png" alt="AI" width="100px;">
+                      <br>
+                      <br>
+                      <h5 class="bold-italic">{{response.description.genre}}</h5>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-divider-result">
+                      <h4 class="bold-italic">Date</h4>
+                    </div>
+                    <div class="card-section">
+                      <div class="center">
+                        <img src="static\images\date.png" alt="AI" width="100px;">
+                        <br>
+                        <br>
+                        <h5 class="bold-italic">{{response.description.date_of_completion}}</h5>  
+                    </div>
+                    </div>
+                  </div>
+                  
+              </div>
+        </div>
+
+        <div class="cell small-12 medium-12">
+            <br>
+        </div>
+
+        <div class="cell small-12 medium-12 rounded-border">
+            <h4 class="bold-italic">Themes</h4>
+            <h6>{{response.meaning}}</h6>
+        </div>
+
+        <div class="cell small-12 medium-12">
+            <br>
+        </div>
+
+        <div class="cell small-12 medium-12 rounded-border">
+            <h4 class="bold-italic">Writing Style</h4>
+            <h6>{{response.style}}</h6>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
