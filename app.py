@@ -34,4 +34,24 @@ def results():
     response_model = model.create_UI_view_model()
     print(response_model)
 
-    return render_template('search_result.html', response=response_model)
+    if response['book']:
+        return render_template('search_result.html', response=response_model)
+    else:
+        return redirect((url_for('no_results', response=response_model.query)))
+
+@app.route('/no_results', methods=['GET'])
+def no_results():
+    response_model = request.args.get('response', '')
+    print(response_model)
+
+    return render_template('no_result.html', response=response_model)
+
+@app.route('/about')
+def about():
+
+    return render_template('about.html')
+
+@app.route('/contact')
+def contact():
+
+    return render_template('contact.html')

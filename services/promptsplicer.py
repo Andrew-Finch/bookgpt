@@ -11,6 +11,9 @@ class PromptSplicer:
     
     def check_book_prompt(self):
 
+        #there are a couple of ways to do this - could try to get the model to estimate whether the input is a book, 
+        # movie or series, its tricky to get a good output here
+
         dict_format = '''
         {
             "book": percentage chance of being a book as a float,
@@ -25,10 +28,14 @@ class PromptSplicer:
         
         Do not output any other text other than the dictionary
         '''.format(input=self.input, dict_format=dict_format)
-        
-        logging.info("PROMPT: %s", prompt)
 
-        return prompt
+        # We'll go for the simple prompt for now because this seems to return the best results
+
+        prompt_simple = f"Return a single float value that represents your opinion on whether {self.input} is a book. Only return this float, no other text"
+        
+        logging.info("PROMPT: %s", prompt_simple)
+
+        return prompt_simple
     
 
     def create_description_prompt(self):

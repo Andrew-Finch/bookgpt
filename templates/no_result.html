@@ -1,0 +1,81 @@
+
+{% extends 'layout.html' %}
+{% block title %}
+Books.AI Search
+{% endblock %}
+
+{% block content %}
+
+<style>
+    .rounded-border {
+        border: 2px solid black;
+        border-radius: 10px;
+        padding: 10px;
+        width: 200px;
+    }
+    .bold-italic {
+        font-weight: bold;
+        font-style: italic;
+    }
+    .center-title {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+    .center-title-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+        }
+      .button {
+          margin: 10px; /* Add horizontal margin */
+          width: 150px;
+      }
+</style>
+
+<div class="grid-container">
+    <div class="grid-x grid-padding-x">
+
+        <div class="cell small-12 medium-12 center-title">
+          <div class="center">
+              <img src="static\images\book.png" alt="AI" width="100px;">
+              <h4 class="bold-italic">Look's like you searched for:</h4>
+          </div>
+        </div>
+
+        <div class="cell small-12 medium-12 center-title">
+          <br>
+          <h2 class="bold-italic">{{response}}</h2>
+          <br>
+        </div>
+
+        <div class="cell small-12 medium-12 center-title">
+          <br>
+          <h5 class="bold-italic">Unfortunately we can't find any books matching this search term!</h5>
+          <br>
+        </div>
+
+        <div class="cell small-12 medium-12 center-title">
+          <br>
+          <h5 class="bold-italic">Please try searching again or visit the 'About' section to learn more about how our prompts work</h5>
+          <br>
+        </div>
+
+        <div class="cell small-12 medium-12 center-title-button">
+          <a href="/" class="button">Search Again</a>
+          <br>
+          <a href="/about" class="button">About</a>
+        </div>
+
+        <div class="cell small-12 medium-12">
+          <br>
+          <hr>
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock %}

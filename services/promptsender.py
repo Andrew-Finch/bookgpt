@@ -28,7 +28,7 @@ class PromptSender:
 
             raw_response = response["choices"][0]["message"]["content"].strip()
 
-            processed_response = json.loads(raw_response)
+            processed_response = float(raw_response)
 
             return processed_response
         
@@ -114,6 +114,7 @@ class PromptSender:
 
         if self.debug:
             response = {
+                'book' : True,
                 'query' : self.input,
                 'description' : 'description description description',
                 'meaning' : 'meaning meaning meaning',
@@ -121,8 +122,13 @@ class PromptSender:
                 'quotes' : 'quotes quotes quotes'
             }
 
-        else:
+            return response
+        
+        book_rating = self.check_if_bookprompt()
+
+        if book_rating > 0.7:
             response = {
+                'book' : True,
                 'query' : self.input,
                 'description' : self.send_and_process_description_prompt(),
                 'meaning' : self.send_and_process_meaning_prompt(),
@@ -130,9 +136,20 @@ class PromptSender:
                 'quotes' : 'quotes quotes quotes'
             }
 
-            print(self.check_if_bookprompt())
+            return response
 
-        return response
+        else:
+            
+            response = {
+                'book' : False,
+                'query' : self.input,
+                'description' : {"author": "author value", "authors nationality": "nationality value", "date of completion": "date of completion value", "genre": "genre value"},
+                'meaning' : 'meaning meaning meaning',
+                'style' : 'style style style',
+                'quotes' : 'quotes quotes quotes'
+            }
+
+            return response
 
 
 
