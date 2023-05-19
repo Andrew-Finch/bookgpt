@@ -29,6 +29,7 @@ def results():
         response['description'],
         response['meaning'],
         response['style'],
+        response['recommendations'],
         response['quotes'])
 
     response_model = model.create_UI_view_model()

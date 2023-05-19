@@ -110,6 +110,30 @@ class PromptSender:
 
         return response["choices"][0]["message"]["content"].strip()
     
+    def send_and_process_recommendations(self):
+
+        openai.api_key = self.api_key
+
+        description_prompt = self.prompt_splicer.create_recommendations()
+
+        try:
+            response = openai.ChatCompletion.create(
+                model="gpt-3.5-turbo",
+                messages=[
+                    {
+                        "role": "system",
+                        "content": description_prompt
+                    }])
+
+            raw_response = response["choices"][0]["message"]["content"].strip()
+
+            processed_response = json.loads(raw_response)
+
+            return processed_response
+        except Exception:
+            logging.exception('JSON Load conditions not met, sampling LLM again')
+            return self.send_and_process_description_prompt()
+    
     def call_prompts(self):
 
         if self.debug:
@@ -133,6 +157,7 @@ class PromptSender:
                 'description' : self.send_and_process_description_prompt(),
                 'meaning' : self.send_and_process_meaning_prompt(),
                 'style' : self.send_and_process_style_prompt(),
+                'recommendations' : self.send_and_process_recommendations(),
                 'quotes' : 'quotes quotes quotes'
             }
 

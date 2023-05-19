@@ -117,11 +117,36 @@ Books.AI Search
 
         <div class="cell small-12 medium-12">
           <br>
+        </div>
+
+        <div class="cell small-12 medium-12 rounded-border">
+            <h4 class="bold-italic">Further Recommendations</h4>
+            
+            <div class="index-grid-container">
+              {% for rec in response.recommendations %}      
+              <div class="card">
+                <div class="card-divider-result">
+                  <h4 class="bold-italic"><a href="{{ url_for('results', query=rec.book) }}">{{rec.book}}</a></h4>
+                </div>
+                <div class="card-section">
+                  <div class="center">
+                    <img src="static\images\book.png" alt="AI" width="100px;">
+                    <h5 class="bold-italic">{{rec.author}}</h5>
+                  </div>
+                </div>
+              
+              </div>
+              {% endfor %}
+            </div>
+        </div>
+
+        <div class="cell small-12 medium-12">
+          <br>
           <hr>
           <br>
         </div>
 
-        
+
     </div>
 </div>
 

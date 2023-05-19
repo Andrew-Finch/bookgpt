@@ -77,3 +77,21 @@ class PromptSplicer:
 
         return prompt
 
+    def create_recommendations(self):
+
+        dict_format = '''
+        {
+            "author 1": "recommendation 1",
+            "author 2": "recommendation 2",
+            "author 3": "recommendation 3"
+        }\
+            '''
+        
+        prompt =  '''Give me 3 recommendations for similar books to the book {input}. Present it as a python dictionary with the authors of the recommended books as keys and recommended books as values. Only output the raw python object in the format of:
+        {dict_format}\
+        '''.format(input=self.input, dict_format=dict_format)
+
+        logging.info("PROMPT: %s", prompt)
+
+        return prompt
+

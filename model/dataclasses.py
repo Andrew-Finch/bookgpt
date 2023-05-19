@@ -16,11 +16,17 @@ class Description:
     genre: str
 
 @dataclass
+class Recommendation:
+    author: str
+    book: str
+
+@dataclass
 class Response:
     query: str
     description: Description
     meaning: str
     style:str
+    recommendations : list[Recommendation]
     quotes: list[Quote]
 
 @dataclass(frozen=True)
